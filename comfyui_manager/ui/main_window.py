@@ -960,6 +960,24 @@ class MainWindow(QMainWindow):
             
             if reply == QMessageBox.Yes:
                 self.logger.info("关闭应用程序")
+                
+                # 停止ComfyUI进程
+                try:
+                    # 获取一键启动标签页实例
+                    one_click_start_tab = self.tab_config.get("one_click_start")
+                    if one_click_start_tab and hasattr(one_click_start_tab, "startup_thread"):
+                        startup_thread = one_click_start_tab.startup_thread
+                        if startup_thread and startup_thread.isRunning():
+                            self.logger.info("停止ComfyUI进程...")
+                            # 调用停止方法
+                            startup_thread.stop()
+                            # 等待线程结束
+                            startup_thread.terminate()
+                            startup_thread.wait()
+                            self.logger.info("ComfyUI进程已停止")
+                except Exception as e:
+                    self.logger.error(f"停止ComfyUI进程失败: {e}")
+                
                 event.accept()
             else:
                 event.ignore()
