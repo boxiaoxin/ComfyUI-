@@ -405,3 +405,111 @@ Python版本: 3.12.10
 管理员权限: False
 缓存时间...
 2026-03-10 20:14:14,545 - ComfyUI_Manager - INFO - 关闭应用程序
+2026-03-10 20:21:42,160 - ComfyUI_Manager - INFO - 尝试加载配置文件: C:\Users\boxia\Documents\GitHub\ComfyUI-Function-Manager\config.json
+2026-03-10 20:21:42,161 - ComfyUI_Manager - INFO - 配置文件存在: C:\Users\boxia\Documents\GitHub\ComfyUI-Function-Manager\config.json
+2026-03-10 20:21:42,161 - ComfyUI_Manager - INFO - 成功加载配置文件: C:\Users\boxia\Documents\GitHub\ComfyUI-Function-Manager\config.json
+2026-03-10 20:21:42,161 - ComfyUI_Manager - INFO - 配置键: ['services_running', 'last_tab', 'window_position', 'window_size', 'venv_path', 'install_path', 'auto_start', 'theme', 'language']
+2026-03-10 20:21:42,213 - ComfyUI_Manager - INFO - 启动ComfyUI功能管理器
+2026-03-10 20:21:42,214 - ComfyUI_Manager - INFO - 创建主窗口
+2026-03-10 20:21:42,270 - ComfyUI_Manager - INFO - 自动加载缓存的检测结果
+2026-03-10 20:21:42,272 - ComfyUI_Manager - INFO - 格式化后的检测结果: === 检测概览 ===
+检测时间: 2026-03-10 19:56:04
+操作系统: Windows
+Python版本: 3.12.10
+检测工具版本: 1.0
+管理员权限: False
+缓存时间...
+2026-03-10 20:21:42,491 - ComfyUI_Manager - INFO - 显示主题设置
+2026-03-10 20:21:42,531 - ComfyUI_Manager - INFO - 显示主题设置
+2026-03-10 20:21:42,533 - ComfyUI_Manager - INFO - 切换到标签 system，索引 0
+2026-03-10 20:21:42,533 - ComfyUI_Manager - INFO - 切换到标签: system
+2026-03-10 20:21:42,534 - ComfyUI_Manager - INFO - 自动加载缓存的检测结果
+2026-03-10 20:21:42,536 - ComfyUI_Manager - INFO - 格式化后的检测结果: === 检测概览 ===
+检测时间: 2026-03-10 19:56:04
+操作系统: Windows
+Python版本: 3.12.10
+检测工具版本: 1.0
+管理员权限: False
+缓存时间...
+2026-03-10 20:21:42,538 - ComfyUI_Manager - INFO - 文件管理标签页UI已刷新
+2026-03-10 20:21:42,539 - ComfyUI_Manager - INFO - 一键启动标签页UI已刷新
+2026-03-10 20:21:42,541 - ComfyUI_Manager - INFO - 显示主题设置
+2026-03-10 20:21:42,543 - ComfyUI_Manager - INFO - 自动加载缓存的检测结果
+2026-03-10 20:21:42,545 - ComfyUI_Manager - INFO - 格式化后的检测结果: === 检测概览 ===
+检测时间: 2026-03-10 19:56:04
+操作系统: Windows
+Python版本: 3.12.10
+检测工具版本: 1.0
+管理员权限: False
+缓存时间...
+2026-03-10 20:21:46,101 - ComfyUI_Manager - INFO - 点击有效，更新 system_detect 按钮的点击时间为 1773145306.1018834
+2026-03-10 20:21:46,102 - ComfyUI_Manager - INFO - 开始系统检测
+2026-03-10 20:21:46,102 - ComfyUI_Manager - INFO - 清除旧缓存，进行新的系统检测
+2026-03-10 20:21:46,107 - ComfyUI_Manager - INFO - 检测进度: 10% - 开始系统检测...
+2026-03-10 20:21:46,289 - ComfyUI_Manager - INFO - 检测进度: 20% - 检测系统信息...
+2026-03-10 20:21:49,569 - ComfyUI_Manager - INFO - 检测进度: 30% - 检测CPU信息...
+2026-03-10 20:21:49,570 - ComfyUI_Manager - INFO - 检测进度: 40% - 检测GPU信息...
+2026-03-10 20:21:49,571 - ComfyUI_Manager - INFO - 检测进度: 50% - 检测内存信息...
+2026-03-10 20:21:49,572 - ComfyUI_Manager - INFO - 检测进度: 60% - 检测存储信息...
+2026-03-10 20:21:49,573 - ComfyUI_Manager - INFO - 检测进度: 70% - 检测网络信息...
+2026-03-10 20:21:49,573 - ComfyUI_Manager - INFO - 检测进度: 80% - 检测Python信息...
+2026-03-10 20:21:49,574 - ComfyUI_Manager - INFO - 检测进度: 90% - 检测Git信息...
+2026-03-10 20:21:49,575 - ComfyUI_Manager - INFO - 检测进度: 100% - 检测完成
+2026-03-10 20:21:49,575 - ComfyUI_Manager - INFO - 系统检测完成
+2026-03-10 20:21:49,585 - ComfyUI_Manager - INFO - 系统检测完成，详细信息已显示
+2026-03-10 20:21:49,585 - ComfyUI_Manager - INFO - 检测结果概览: 系统信息=6项, CPU信息=5项, GPU数量=1
+2026-03-10 20:21:52,312 - ComfyUI_Manager - INFO - 点击有效，更新 system_detect 按钮的点击时间为 1773145312.3120713
+2026-03-10 20:21:52,313 - ComfyUI_Manager - INFO - 开始系统检测
+2026-03-10 20:21:52,313 - ComfyUI_Manager - INFO - 清除旧缓存，进行新的系统检测
+2026-03-10 20:21:52,317 - ComfyUI_Manager - INFO - 检测进度: 10% - 开始系统检测...
+2026-03-10 20:21:52,427 - ComfyUI_Manager - INFO - 检测进度: 20% - 检测系统信息...
+2026-03-10 20:21:55,761 - ComfyUI_Manager - INFO - 检测进度: 30% - 检测CPU信息...
+2026-03-10 20:21:55,762 - ComfyUI_Manager - INFO - 检测进度: 40% - 检测GPU信息...
+2026-03-10 20:21:55,763 - ComfyUI_Manager - INFO - 检测进度: 50% - 检测内存信息...
+2026-03-10 20:21:55,764 - ComfyUI_Manager - INFO - 检测进度: 60% - 检测存储信息...
+2026-03-10 20:21:55,765 - ComfyUI_Manager - INFO - 检测进度: 70% - 检测网络信息...
+2026-03-10 20:21:55,765 - ComfyUI_Manager - INFO - 检测进度: 80% - 检测Python信息...
+2026-03-10 20:21:55,765 - ComfyUI_Manager - INFO - 检测进度: 90% - 检测Git信息...
+2026-03-10 20:21:55,766 - ComfyUI_Manager - INFO - 检测进度: 100% - 检测完成
+2026-03-10 20:21:55,766 - ComfyUI_Manager - INFO - 系统检测完成
+2026-03-10 20:21:55,776 - ComfyUI_Manager - INFO - 系统检测完成，详细信息已显示
+2026-03-10 20:21:55,777 - ComfyUI_Manager - INFO - 检测结果概览: 系统信息=6项, CPU信息=5项, GPU数量=1
+2026-03-10 20:25:08,277 - ComfyUI_Manager - INFO - 关闭应用程序
+2026-03-10 20:25:16,358 - ComfyUI_Manager - INFO - 尝试加载配置文件: C:\Users\boxia\Documents\GitHub\ComfyUI-Function-Manager\config.json
+2026-03-10 20:25:16,358 - ComfyUI_Manager - INFO - 配置文件存在: C:\Users\boxia\Documents\GitHub\ComfyUI-Function-Manager\config.json
+2026-03-10 20:25:16,358 - ComfyUI_Manager - INFO - 成功加载配置文件: C:\Users\boxia\Documents\GitHub\ComfyUI-Function-Manager\config.json
+2026-03-10 20:25:16,358 - ComfyUI_Manager - INFO - 配置键: ['services_running', 'last_tab', 'window_position', 'window_size', 'venv_path', 'install_path', 'auto_start', 'theme', 'language']
+2026-03-10 20:25:16,412 - ComfyUI_Manager - INFO - 启动ComfyUI功能管理器
+2026-03-10 20:25:16,412 - ComfyUI_Manager - INFO - 创建主窗口
+2026-03-10 20:25:16,481 - ComfyUI_Manager - INFO - 自动加载缓存的检测结果
+2026-03-10 20:25:16,482 - ComfyUI_Manager - INFO - 格式化后的检测结果: === 检测概览 ===
+检测时间: 2026-03-10 20:21:52
+操作系统: Windows
+Python版本: 3.12.10
+检测工具版本: 1.0
+管理员权限: False
+缓存时间...
+2026-03-10 20:25:16,701 - ComfyUI_Manager - INFO - 显示主题设置
+2026-03-10 20:25:16,742 - ComfyUI_Manager - INFO - 显示主题设置
+2026-03-10 20:25:16,745 - ComfyUI_Manager - INFO - 切换到标签 system，索引 0
+2026-03-10 20:25:16,745 - ComfyUI_Manager - INFO - 切换到标签: system
+2026-03-10 20:25:16,746 - ComfyUI_Manager - INFO - 自动加载缓存的检测结果
+2026-03-10 20:25:16,747 - ComfyUI_Manager - INFO - 格式化后的检测结果: === 检测概览 ===
+检测时间: 2026-03-10 20:21:52
+操作系统: Windows
+Python版本: 3.12.10
+检测工具版本: 1.0
+管理员权限: False
+缓存时间...
+2026-03-10 20:25:16,751 - ComfyUI_Manager - INFO - 文件管理标签页UI已刷新
+2026-03-10 20:25:16,751 - ComfyUI_Manager - INFO - 一键启动标签页UI已刷新
+2026-03-10 20:25:16,754 - ComfyUI_Manager - INFO - 显示主题设置
+2026-03-10 20:25:16,756 - ComfyUI_Manager - INFO - 自动加载缓存的检测结果
+2026-03-10 20:25:16,758 - ComfyUI_Manager - INFO - 格式化后的检测结果: === 检测概览 ===
+检测时间: 2026-03-10 20:21:52
+操作系统: Windows
+Python版本: 3.12.10
+检测工具版本: 1.0
+管理员权限: False
+缓存时间...
+2026-03-10 20:25:20,180 - ComfyUI_Manager - INFO - 关闭应用程序
