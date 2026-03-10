@@ -603,8 +603,11 @@ class FileManagementTab(QWidget):
             self.logger.info("开始管理工作流")
             # 工作流路径
             comfyui_path = os.path.join(self.install_path, "ComfyUI")
-            # 使用 user\default 目录
-            workflows_path = os.path.join(comfyui_path, "user", "default")
+            # 优先使用 user\default\workflows 目录
+            workflows_path = os.path.join(comfyui_path, "user", "default", "workflows")
+            # 如果不存在，回退到根目录的 workflows
+            if not os.path.exists(workflows_path):
+                workflows_path = os.path.join(comfyui_path, "workflows")
             
             self.logger.info(f"ComfyUI路径: {comfyui_path}")
             self.logger.info(f"工作流路径: {workflows_path}")

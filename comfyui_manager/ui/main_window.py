@@ -19,14 +19,12 @@ from PyQt5.QtGui import QIcon, QColor, QBrush, QPen, QPainter, QRegion
 
 from comfyui_manager.utils.logger import Logger
 from comfyui_manager.utils.language_manager import lang_manager
-from comfyui_manager.utils.config_manager import config_manager
 from comfyui_manager.ui.system_tab import SystemTab
 from comfyui_manager.ui.one_click_install_tab import OneClickInstallTab
 from comfyui_manager.ui.smart_fix_tab import SmartFixTab
 from comfyui_manager.ui.file_management_tab import FileManagementTab
 from comfyui_manager.ui.one_click_start_tab import OneClickStartTab
 from comfyui_manager.ui.settings_tab import SettingsTab
-from comfyui_manager.modules.system_detector import SystemDetector
 
 
 def check_single_instance():
@@ -534,35 +532,6 @@ class MainWindow(QMainWindow):
                         self.switch_tab("one_click_start", skip_validation=True)
         except Exception as e:
             self.logger.error(f"检查自动运行状态失败: {e}")
-        
-        # 检查是否首次运行
-        try:
-            if config_manager.get_first_run():
-                self.logger.info("首次运行检测: 执行初始化操作")
-                
-                # 1. 清空日志文件
-                self.logger.clear_logs()
-                self.logger.info("日志文件已清空")
-                
-                # 2. 运行系统检测
-                self.logger.info("开始系统检测...")
-                detector = SystemDetector()
-                
-                def progress_callback(progress, message):
-                    self.status_bar.showMessage(f"系统检测: {message} ({progress}%)")
-                
-                results = detector.run_complete_detection(progress_callback)
-                self.logger.info("系统检测完成")
-                
-                # 3. 更新系统标签页的检测结果
-                if hasattr(self.tab_config.get("system"), "update_detection_results"):
-                    self.tab_config["system"].update_detection_results(results)
-                
-                # 4. 将首次运行标志设置为False
-                config_manager.set_first_run(False)
-                self.logger.info("首次运行初始化完成")
-        except Exception as e:
-            self.logger.error(f"首次运行初始化失败: {e}")
     
     def create_title_bar(self):
         """创建自定义标题栏"""
@@ -960,24 +929,6 @@ class MainWindow(QMainWindow):
             
             if reply == QMessageBox.Yes:
                 self.logger.info("关闭应用程序")
-                
-                # 停止ComfyUI进程
-                try:
-                    # 获取一键启动标签页实例
-                    one_click_start_tab = self.tab_config.get("one_click_start")
-                    if one_click_start_tab and hasattr(one_click_start_tab, "startup_thread"):
-                        startup_thread = one_click_start_tab.startup_thread
-                        if startup_thread and startup_thread.isRunning():
-                            self.logger.info("停止ComfyUI进程...")
-                            # 调用停止方法
-                            startup_thread.stop()
-                            # 等待线程结束
-                            startup_thread.terminate()
-                            startup_thread.wait()
-                            self.logger.info("ComfyUI进程已停止")
-                except Exception as e:
-                    self.logger.error(f"停止ComfyUI进程失败: {e}")
-                
                 event.accept()
             else:
                 event.ignore()

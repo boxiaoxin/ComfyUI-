@@ -1128,23 +1128,4 @@ class SystemTab(QWidget):
         # 重新加载缓存数据以更新显示文本
         self._load_cache_data()
     
-    def update_detection_results(self, results):
-        """更新检测结果
-        
-        Args:
-            results: 系统检测结果
-        """
-        try:
-            self.logger.info("更新系统检测结果")
-            # 格式化检测结果
-            info_text = self.format_detection_results(results)
-            self.system_info.setPlainText(info_text)
-            # 记录到日志
-            self.logger.info("系统检测结果已更新到界面")
-            # 只记录关键信息，避免日志过大
-            self.logger.info(f"检测结果概览: 系统信息={len(results.get('system', {}))}项, CPU信息={len(results.get('cpu', {}))}项, GPU数量={len(results.get('gpu', []))}")
-        except Exception as e:
-            self.logger.error(f"更新检测结果失败: {e}")
-            self.system_info.setPlainText(lang_manager.get("processing_results_failed").format(error=str(e)))
-    
 

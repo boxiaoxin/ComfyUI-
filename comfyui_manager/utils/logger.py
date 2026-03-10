@@ -143,26 +143,14 @@ class Logger:
                     with open(self.log_file, 'wb') as f:
                         f.write(content_to_keep)
                     
-                    # 记录清理操作 - 使用logger记录，避免再次触发清理
-                    self.logger.info(f"日志文件已清理，大小从 {file_size:.2f}KB 减少到 {len(content_to_keep)/1024:.2f}KB")
+                    # 记录清理操作 - 直接打印，避免再次触发清理
+                    print(f"日志文件已清理，大小从 {file_size:.2f}KB 减少到 {len(content_to_keep)/1024:.2f}KB")
                 except Exception as e:
                     # 如果清理失败，尝试更简单的方法：直接清空文件
-                    self.logger.error(f"日志清理失败，尝试清空文件: {str(e)}")
+                    print(f"日志清理失败，尝试清空文件: {str(e)}")
                     with open(self.log_file, 'wb') as f:
                         f.write(b'')
-                    self.logger.info("日志文件已清空")
+                    print("日志文件已清空")
         except Exception as e:
             # 避免清理过程影响正常日志功能
-            self.logger.error(f"日志清理失败: {str(e)}")
-    
-    def clear_logs(self) -> None:
-        """清空日志文件"""
-        try:
-            if os.path.exists(self.log_file):
-                with open(self.log_file, 'wb') as f:
-                    f.write(b'')
-                # 直接打印，避免再次触发日志写入
-                print("日志文件已清空")
-        except Exception as e:
-            # 直接打印错误，避免再次触发日志写入
-            print(f"清空日志失败: {str(e)}")
+            print(f"日志清理失败: {str(e)}")

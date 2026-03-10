@@ -7,6 +7,10 @@ ComfyUI功能管理器主程序
 import sys
 import os
 
+# 设置Qt平台插件路径
+qt_plugins_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'comfyui_manager', 'embedded', 'python', 'Lib', 'site-packages', 'PyQt5', 'Qt5', 'plugins')
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = qt_plugins_path
+
 # 将项目根目录添加到Python模块搜索路径
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 

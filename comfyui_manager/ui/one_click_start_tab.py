@@ -89,14 +89,7 @@ class StartComfyUIThread(QThread):
                         raise Exception("虚拟环境不存在，请先创建环境")
             
             # 获取虚拟环境中的Python可执行文件路径
-            if os.name == "nt":
-                # 在Windows系统下使用pythonw.exe来避免命令提示符窗口
-                venv_python = os.path.join(venv_path, "Scripts", "pythonw.exe")
-                # 如果pythonw.exe不存在，回退到python.exe
-                if not os.path.exists(venv_python):
-                    venv_python = os.path.join(venv_path, "Scripts", "python.exe")
-            else:
-                venv_python = os.path.join(venv_path, "bin", "python")
+            venv_python = os.path.join(venv_path, "Scripts", "python.exe") if os.name == "nt" else os.path.join(venv_path, "bin", "python")
             if not os.path.exists(venv_python):
                 raise Exception("虚拟环境中未找到Python可执行文件")
             self.update_log.emit(f"使用虚拟环境Python: {venv_python}")
@@ -167,19 +160,34 @@ class StartComfyUIThread(QThread):
             
             # 启动ComfyUI进程
             self.update_progress.emit(60, "正在启动ComfyUI进程...")
-            # 使用标准方式启动进程，以便读取输出
-            creationflags = subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0
-            self.process = subprocess.Popen(
-                [venv_python, "main.py"],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                encoding='utf-8',
-                errors='replace',
-                bufsize=1,
-                cwd=comfyui_path,
-                creationflags=creationflags
-            )
+            if os.name == 'nt':  # Windows系统
+                # 使用subprocess启动，以便读取输出
+                creationflags = subprocess.CREATE_NO_WINDOW
+                self.process = subprocess.Popen(
+                    [venv_python, "main.py"],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                    encoding='utf-8',
+                    errors='replace',
+                    bufsize=1,
+                    cwd=comfyui_path,
+                    creationflags=creationflags
+                )
+            else:
+                # 非Windows系统使用标准方式
+                creationflags = 0
+                self.process = subprocess.Popen(
+                    [venv_python, "main.py"],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                    encoding='utf-8',
+                    errors='replace',
+                    bufsize=1,
+                    cwd=comfyui_path,
+                    creationflags=creationflags
+                )
             
             # 读取输出并查找启动信息
             server_url = None
@@ -209,8 +217,34 @@ class StartComfyUIThread(QThread):
                         
                         # 打开浏览器
                         self.update_progress.emit(90, "打开浏览器界面...")
-                        webbrowser.open(server_url)
-                        self.update_progress.emit(95, "浏览器已打开")
+                        try:
+                            # 尝试使用默认浏览器打开
+                            import webbrowser
+                            # 尝试多种方式打开浏览器
+                            if hasattr(webbrowser, 'get'):
+                                # 尝试获取默认浏览器
+                                browser = webbrowser.get()
+                                browser.open(server_url)
+                            else:
+                                # 直接使用open方法
+                                webbrowser.open(server_url)
+                            self.update_progress.emit(95, "浏览器已打开")
+                        except Exception as e:
+                            self.update_log.emit(f"打开浏览器失败: {e}")
+                            # 尝试使用系统命令打开浏览器
+                            try:
+                                if os.name == 'nt':
+                                    subprocess.run(['start', server_url], shell=True, check=True)
+                                elif os.name == 'posix':
+                                    # 尝试使用xdg-open（Linux）或open（macOS）
+                                    if 'darwin' in sys.platform:
+                                        subprocess.run(['open', server_url], check=True)
+                                    else:
+                                        subprocess.run(['xdg-open', server_url], check=True)
+                                self.update_progress.emit(95, "浏览器已打开")
+                            except Exception as e2:
+                                self.update_log.emit(f"使用系统命令打开浏览器失败: {e2}")
+                                self.update_progress.emit(95, "浏览器打开失败，请手动访问: " + server_url)
                         startup_complete = True
                         break
                 elif "Running on" in line:
@@ -221,8 +255,34 @@ class StartComfyUIThread(QThread):
                         
                         # 打开浏览器
                         self.update_progress.emit(90, "打开浏览器界面...")
-                        webbrowser.open(server_url)
-                        self.update_progress.emit(95, "浏览器已打开")
+                        try:
+                            # 尝试使用默认浏览器打开
+                            import webbrowser
+                            # 尝试多种方式打开浏览器
+                            if hasattr(webbrowser, 'get'):
+                                # 尝试获取默认浏览器
+                                browser = webbrowser.get()
+                                browser.open(server_url)
+                            else:
+                                # 直接使用open方法
+                                webbrowser.open(server_url)
+                            self.update_progress.emit(95, "浏览器已打开")
+                        except Exception as e:
+                            self.update_log.emit(f"打开浏览器失败: {e}")
+                            # 尝试使用系统命令打开浏览器
+                            try:
+                                if os.name == 'nt':
+                                    subprocess.run(['start', server_url], shell=True, check=True)
+                                elif os.name == 'posix':
+                                    # 尝试使用xdg-open（Linux）或open（macOS）
+                                    if 'darwin' in sys.platform:
+                                        subprocess.run(['open', server_url], check=True)
+                                    else:
+                                        subprocess.run(['xdg-open', server_url], check=True)
+                                self.update_progress.emit(95, "浏览器已打开")
+                            except Exception as e2:
+                                self.update_log.emit(f"使用系统命令打开浏览器失败: {e2}")
+                                self.update_progress.emit(95, "浏览器打开失败，请手动访问: " + server_url)
                         startup_complete = True
                         break
                 

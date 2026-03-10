@@ -54,8 +54,7 @@ class ConfigManager:
             "window_size": [960, 640],
             "venv_path": None,
             "use_embedded_python": True,
-            "use_embedded_git": True,
-            "first_run": True
+            "use_embedded_git": True
         }
     
     def save_config(self) -> None:
@@ -140,14 +139,6 @@ class ConfigManager:
     def set_use_embedded_git(self, use: bool) -> None:
         """设置是否使用嵌入的 Git"""
         self.set("use_embedded_git", use)
-    
-    def get_first_run(self) -> bool:
-        """获取是否首次运行"""
-        return self.get("first_run", True)
-    
-    def set_first_run(self, value: bool) -> None:
-        """设置首次运行标志"""
-        self.set("first_run", value)
 
 
 # 创建全局配置管理器实例
